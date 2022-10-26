@@ -1,0 +1,166 @@
+<!-- <!DOCTYPE html>
+<HTML>
+<head>
+    <title>Page title</title>
+</head>
+<body>
+
+
+
+    <p>Enter a customer_number <input type="text" id="theText">  </p>
+    <p> <button id="fff">fetche the newest water level value by customer number</button></p>
+    <p> returned data is <div id="dbdata"></div></p>
+
+    <? php 
+
+          $a = "SELECT * FROM `raw_data` where customer_number='{$theCustomerNumber}' order by time desc limit 1";
+    $q=mysqli_query($con,$a);    
+    
+    $row=mysqli_fetch_object($q);
+    while ($row)
+    {         
+        
+        echo " {$row->water_level} {$row->status} {$row->customer_number}";
+        ?>
+
+        
+        <?php
+        $row=mysqli_fetch_object($q);
+        
+    }       
+    
+    echo "<br/>success";
+    ?>
+
+    <script type="text/javascript">
+
+
+var btn = document.getElementById("fff");
+btn.addEventListener("click", function() {
+    
+    const xhttp=new XMLHttpRequest();
+            
+            id=document.getElementById("theText").value;
+            xhttp.onload=function(){
+                document.getElementById("dbdata").innerText=this.responseText;
+            }
+            console.log(id);
+            xhttp.open("GET", "retrieve.php?customer_number="+id);
+            xhttp.send();
+
+            
+}, false);
+
+
+    </script>
+
+</body>
+
+</HTML> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<HTML>
+<head>
+    <title>Page title</title>
+</head>
+<body>
+
+
+    <h1>Illustrating AJAX fetch of dynamic content</h1>
+    <p> we will fetch details of one particular record in the db. You can enter an ID if you know one (eg id=1,...,6) </p>
+
+    <p>Enter a customer_number <input type="text" id="theText">  </p>
+    <p> <button id="fff">fetche the newest water level value by customer number</button></p>
+    <p> returned data is <div id="dbdata"></div></p>
+
+        
+
+    <script type="text/javascript">
+
+
+var btn = document.getElementById("fff");
+btn.addEventListener("click", function() {
+    
+    const xhttp=new XMLHttpRequest();
+            
+            id=document.getElementById("theText").value;
+            xhttp.onload=function(){
+                document.getElementById("dbdata").innerText=this.responseText;
+            }
+            console.log(id);
+            xhttp.open("GET", "retrieve.php?customer_number="+id);
+            xhttp.send();
+
+            
+}, false);
+
+
+        var counter=0;
+        function updateByJS(){
+            counter++;
+            document.getElementById("js_update").innerText="This is the New Text, number of times pressed ="+counter;
+        }
+
+        function updateByAJAX_static(){
+            const xhttp=new XMLHttpRequest();
+            xhttp.onload=function(){
+                document.getElementById("statictext").innerText=this.responseText;
+            }
+            xhttp.open("GET", "/iot/AJAX/someText.txt");
+            xhttp.send();
+        }
+
+        function updateByAJAX_dbData(){
+            const xhttp=new XMLHttpRequest();
+            
+            id=document.getElementById("theText").value;
+            console.log(id);
+            xhttp.open("GET", "/retrieve.php?water_level=99&status=high&customer_number=1");
+            xhttp.send();
+            xhttp.onload=function(){
+                document.getElementById("dbdata").innerText=this.responseText;
+            }
+        }
+        function deff(){
+            document.write("Amen")
+        }
+
+    </script>
+
+</body>
+
+</HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

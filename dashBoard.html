@@ -1,0 +1,104 @@
+
+
+
+<!DOCTYPE html>
+<HTML>
+<head>
+    <title>DashBoard</title>
+</head>
+<body>
+<div>
+    <div id="dbdata"></div>
+    <p> <button id="fff">Tank 1</button></p>
+    <p> returned data for Tank 1 is</p>
+    
+</div>
+
+    <div>
+        
+
+    <p> <button id="tank" onclick="myFunction()">Tank 2</button></p>
+    <div>...........................</div>
+    <p> returned data for Tank 2 is  <div id="tank2"></div></p>
+
+
+
+        
+    </div>
+    
+
+
+
+
+        
+
+    <script type="text/javascript">
+
+
+var btn = document.getElementById("fff");
+
+
+btn.addEventListener("click", function() {
+    
+    const xhttp=new XMLHttpRequest();
+            
+            
+            xhttp.onload=function(){
+                document.getElementById("tank2").innerText=this.responseText;
+            }
+            xhttp.open("GET", "retrieve.php?customer_number=1");
+            xhttp.send();
+
+            
+}, false);
+
+// var btn2 = document.getElementById("fff2");
+
+// btn2.addEventListener("click", function() {
+    
+//     const xhttp=new XMLHttpRequest();
+            
+//             xhttp.onload=function(){
+//                 document.getElementByClassName("dbdata").innerText=this.responseText;
+//             }
+
+//             xhttp.open("GET", "retrieve.php?customer_number=2");
+//             xhttp.send();
+
+            
+// }, false);
+
+function myFunction(){
+       const xhttp=new XMLHttpRequest();
+            
+            
+            xhttp.onload=function(){
+                document.getElementById("tank2").innerText=this.responseText;
+            }
+            xhttp.open("GET", "retrieve.php?customer_number=2");
+            xhttp.send();
+
+    console.log("pressed")
+}
+
+
+    </script>
+
+</body>
+
+</HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
