@@ -55,4 +55,5 @@ bt.addEventListener("click", function() {
 
  <?php include("footer.php"); ?>
  </body>
+<!--  there is a change here-->
  </html>
